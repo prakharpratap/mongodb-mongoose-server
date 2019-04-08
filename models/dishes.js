@@ -1,40 +1,31 @@
-const mongoose=require('mongoose');
+const mongoose =require('mongoose');
 const Schema=mongoose.Schema;
 
-var commentSchema = new Schema({
-    rating:  {
-        type: Number,
-        min: 1,
-        max: 5,
-        required: true
+const commentSchema=new Schema({
+    rating:{
+        type:Number,
+        min:1,
+        max:5,
+        required:true
     },
-    comment:  {
-        type: String,
-        required: true
+    comment:{
+        type:String,
+        required:true
     },
-    author:  {
-        type: String,
-        required: true
+    author:{
+        type:String,
+        required:true
     }
-}, {
-    timestamps: true
-});
+},{timestamp:true});
 
-var dishSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    description: {
-        type: String,
-        required: true
+const dishSchema=new Schema({
+    name:{
+        type:String,
+        required:true,
+        unique:true
     },
     comments:[commentSchema]
-}, {
-    timestamps: true
-});
+},{timestamp: true});
 
-var Dishes=mongoose.model('Dish',dishSchema);
-
+var Dishes=mongoose.model('dish',dishSchema);
 module.exports=Dishes;
